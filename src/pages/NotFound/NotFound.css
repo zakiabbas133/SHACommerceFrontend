@@ -1,0 +1,28 @@
+.not-found {
+  min-height: 500px;
+  padding-top: 85px;
+  text-align: center;
+}
+.not-found > strong {
+  display: block;
+  color: #dfe6ef;
+  font: 700 clamp(130px, 18vw, 211px)/0.87 var(--space-font);
+  letter-spacing: -0.1em;
+}
+.not-found h1 {
+  margin: 4px 0 12px;
+  color: #1b2a3d;
+  font: 600 clamp(40px, 5vw, 62px)/1.03 var(--space-font);
+  letter-spacing: -0.06em;
+}
+.not-found h1 em {
+  color: #3d7be0;
+  font-style: normal;
+}
+.not-found p {
+  max-width: 370px;
+  margin: 0 auto 21px;
+  color: #7d8998;
+  font-size: 14px;
+  line-height: 1.8;
+}
