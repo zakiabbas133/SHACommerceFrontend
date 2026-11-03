@@ -33,7 +33,34 @@ export type Category = {
 export type DemoOrder = {
   id: string;
   date: string;
+  createdAt: string;
   total: number;
+  subtotal: number;
+  discount: number;
+  shippingCost: number;
   email: string;
-  items: { productId: string; quantity: number }[];
+  phone: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  address: string;
+  apartment: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  billingAddress: string | null;
+  shippingMethod: string;
+  paymentMethod: string;
+  items: {
+    productId: string;
+    name?: string;
+    brand?: string;
+    model?: string;
+    quantity: number;
+    unitPrice?: number;
+    lineTotal?: number;
+    image?: string;
+    color?: string;
+    size?: string;
+  }[];
 };

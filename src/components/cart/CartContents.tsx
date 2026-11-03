@@ -28,7 +28,7 @@ export function CartContents({ onClose }: { onClose?: () => void }) {
   );
   const [message, setMessage] = useState("");
   const discount = couponApplied ? Math.round(subtotal * 0.1) : 0;
-  const shipping = subtotal === 0 || subtotal >= 150 ? 0 : 12;
+  const shipping = subtotal === 0 || subtotal >= 5000 ? 0 : 150;
   const applyCoupon = (event: SubmitEvent) => {
     event.preventDefault();
     if (coupon.trim().toUpperCase() === "NEXA10") {

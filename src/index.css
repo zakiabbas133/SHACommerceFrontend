@@ -93,7 +93,6 @@ article,
 .summary-product-image,
 .checkout-section,
 .shipping-option,
-.demo-payment-note,
 .payment-option {
   border-radius: var(--radius-sm);
 }

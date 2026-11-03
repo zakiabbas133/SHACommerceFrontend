@@ -1,11 +1,21 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react";
-import { ArrowRight, Check, ShieldCheck, Truck } from "lucide-react";
+import {
+  ArrowRight,
+  Banknote,
+  Check,
+  ShieldCheck,
+  Truck,
+} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { formatPrice, products } from "../../data/products";
 import { useShop } from "../../store/useShop";
 import { EmptyState } from "../../components/common/EmptyState";
 import "../../styles/commerce.css";
 import type { DemoOrder } from "../../types/catalog";
+
+function createOrderId() {
+  return `NX-${Date.now().toString().slice(-7)}`;
+}
 
 export function Checkout() {
   const { cart, clearCart } = useShop();
@@ -32,7 +42,7 @@ export function Checkout() {
       : "",
   );
   const discount = couponApplied ? Math.round(subtotal * 0.1) : 0;
-  const shipping = subtotal >= 150 ? 0 : 12;
+  const shipping = subtotal === 0 || subtotal >= 5000 ? 0 : 150;
   const total = subtotal - discount + shipping;
   const clearFieldError = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.currentTarget.name;
@@ -74,12 +84,61 @@ export function Checkout() {
       form.querySelector<HTMLInputElement>(`[name="${fieldName}"]`)?.focus();
       return;
     }
+    const items = cart.map((line) => {
+      const product = products.find((item) => item.id === line.productId);
+      return product
+        ? {
+            productId: line.productId,
+            name: product.name,
+            brand: product.brand,
+            model: product.model,
+            image: product.images[0],
+            quantity: line.quantity,
+            unitPrice: product.price,
+            lineTotal: product.price * line.quantity,
+            color: line.color,
+            size: line.size,
+          }
+        : null;
+    });
+    if (items.some((item) => item === null)) {
+      setFieldErrors({
+        items:
+          "A product in your cart is no longer available. Return to your cart and remove it before placing the order.",
+      });
+      return;
+    }
+    const createdAt = new Date();
+    const firstName = String(data.get("firstName")).trim();
+    const lastName = String(data.get("lastName")).trim();
+    const apartment = String(data.get("apartment") || "").trim();
     const order: DemoOrder = {
-      id: `NX-${Date.now().toString().slice(-7)}`,
-      date: new Date().toLocaleDateString(),
+      id: createOrderId(),
+      date: createdAt.toLocaleDateString(),
+      createdAt: createdAt.toISOString(),
       total,
-      email: String(data.get("email")),
-      items: cart,
+      subtotal,
+      discount,
+      shippingCost: shipping,
+      email: String(data.get("email")).trim(),
+      phone: String(data.get("phone")),
+      firstName,
+      lastName,
+      fullName: `${firstName} ${lastName}`,
+      address: [
+        String(data.get("address")).trim(),
+        ...(apartment ? [apartment] : []),
+      ].join(", "),
+      apartment,
+      city: String(data.get("city")).trim(),
+      postalCode: String(data.get("postalCode")).trim(),
+      country: String(data.get("country")),
+      billingAddress: sameAddress
+        ? null
+        : String(data.get("billingAddress")).trim(),
+      shippingMethod: String(data.get("shippingMethod")),
+      paymentMethod: String(data.get("payment")),
+      items: items.filter((item): item is NonNullable<typeof item> => item !== null),
     };
     const previous = safeOrders();
     localStorage.setItem("nexa-orders", JSON.stringify([order, ...previous]));
@@ -113,8 +172,8 @@ export function Checkout() {
             <div className="checkout-error-summary" role="alert">
               <strong>A few details need your attention</strong>
               <span>
-                Check the highlighted fields below so we can deliver your order
-                and send your confirmation.
+                {fieldErrors.items ||
+                  "Check the highlighted fields below so we can deliver your order and send your confirmation."}
               </span>
             </div>
           )}
@@ -215,6 +274,7 @@ export function Checkout() {
                 disabled
               />
             </div>
+            <input type="hidden" name="country" value="Pakistan" />
             <label className="check-row">
               <input
                 type="checkbox"
@@ -256,26 +316,41 @@ export function Checkout() {
               </span>
               <b>{shipping ? formatPrice(shipping) : "Free"}</b>
             </div>
+            <input
+              type="hidden"
+              name="shippingMethod"
+              value="Standard delivery"
+            />
           </section>
           <section className="checkout-section">
             <div className="checkout-section-title">
               <span>04</span>
               <h2>Payment</h2>
             </div>
-            <div className="demo-payment-note">
-              <ShieldCheck size={18} />
-              <div>
-                <strong>Demo payment only</strong>
-                <p>
-                  No card details requested. This demo does not connect to a
-                  payment provider.
-                </p>
-              </div>
-            </div>
-            <div className="payment-option">
-              <input type="radio" name="payment" defaultChecked />
-              <span>Demo order — no charge will be made</span>
-              <span className="demo-chip">DEMO</span>
+            <label className="payment-option cod-payment-option">
+              <input
+                type="radio"
+                name="payment"
+                value="Cash on Delivery"
+                defaultChecked
+              />
+              <span className="cod-payment-icon" aria-hidden="true">
+                <Banknote size={21} strokeWidth={1.8} />
+              </span>
+              <span className="cod-payment-copy">
+                <strong>Cash on Delivery</strong>
+                <small>Pay in cash when your order arrives</small>
+              </span>
+              <span className="cod-payment-selected">
+                <Check size={13} /> Selected
+              </span>
+            </label>
+            <div className="cod-payment-note">
+              <ShieldCheck size={17} />
+              <span>
+                No online payment required. Pay the courier when your parcel is
+                delivered.
+              </span>
             </div>
           </section>
         </div>

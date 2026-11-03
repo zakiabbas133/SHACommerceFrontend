@@ -29,29 +29,82 @@ export function Orders() {
         <div className="orders-list">
           {orders.map((order) => (
             <article className="order-card" key={order.id}>
-              <div>
+              <div className="order-card-heading">
                 <span className="eyebrow">ORDER {order.id}</span>
                 <p>
                   {order.date} ·{" "}
                   {order.items.reduce((sum, item) => sum + item.quantity, 0)}{" "}
                   items
                 </p>
-                <div className="order-products">
-                  {order.items.map((item) => {
-                    const product = products.find(
-                      (entry) => entry.id === item.productId,
-                    );
-                    return product ? (
-                      <span key={product.id}>
-                        {product.name} × {item.quantity}
-                      </span>
-                    ) : null;
-                  })}
-                </div>
               </div>
               <strong>{formatPrice(order.total)}</strong>
+              <div className="order-products">
+                {order.items.map((item, index) => {
+                  const product = products.find(
+                    (entry) => entry.id === item.productId,
+                  );
+                  const name = item.name || product?.name || "Saved order item";
+                  const brand = item.brand || product?.brand;
+                  const model = item.model || product?.model;
+                  const image = item.image || product?.images[0];
+                  const unitPrice = item.unitPrice ?? product?.price ?? 0;
+                  const lineTotal =
+                    item.lineTotal ?? unitPrice * item.quantity;
+                  const itemKey = `${item.productId}-${item.color || ""}-${item.size || ""}-${index}`;
+
+                  return (
+                    <article className="order-product" key={itemKey}>
+                      {product ? (
+                        <Link
+                          className="order-product-image"
+                          to={`/product/${product.slug}`}
+                          aria-label={`View ${name}`}
+                        >
+                          {image && <img src={image} alt="" loading="lazy" />}
+                          <span className="order-product-quantity">
+                            {item.quantity}
+                          </span>
+                        </Link>
+                      ) : (
+                        <div className="order-product-image">
+                          {image && <img src={image} alt="" loading="lazy" />}
+                          <span className="order-product-quantity">
+                            {item.quantity}
+                          </span>
+                        </div>
+                      )}
+                      <div className="order-product-details">
+                        {brand && (
+                          <span className="order-product-brand">{brand}</span>
+                        )}
+                        {product ? (
+                          <Link
+                            className="order-product-name"
+                            to={`/product/${product.slug}`}
+                          >
+                            {name}
+                          </Link>
+                        ) : (
+                          <strong className="order-product-name">{name}</strong>
+                        )}
+                        {model && (
+                          <span className="order-product-model">
+                            Model · {model}
+                          </span>
+                        )}
+                      </div>
+                      <div className="order-product-price">
+                        <span>
+                          {formatPrice(unitPrice)} <i>each</i>
+                        </span>
+                        <strong>{formatPrice(lineTotal)} Total</strong>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
               <span className="order-status">
-                <Check size={13} /> Demo order placed
+                <Check size={13} /> Order placed
               </span>
             </article>
           ))}

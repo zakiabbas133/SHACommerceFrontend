@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+// import { Link } from "react-router-dom";
+// import { ArrowRight } from "lucide-react";
 import { CartContents } from "../../components/cart/CartContents";
 import "../../styles/commerce.css";
 
@@ -11,8 +11,8 @@ export function Cart() {
         <h1>Your cart.</h1>
         <p>Product quantities and availability can change before checkout.</p>
       </div>
-      <div className="cart-page-grid">
-        <CartContents />
+      <CartContents />
+      {/* <div className="cart-page-grid">
         <aside className="cart-assurance">
           <strong>Every order, protected.</strong>
           <p>Genuine products, secure demo checkout and clear warranty info.</p>
@@ -20,7 +20,7 @@ export function Cart() {
             Need help choosing? <ArrowRight size={14} />
           </Link>
         </aside>
-      </div>
+      </div> */}
     </div>
   );
 }
