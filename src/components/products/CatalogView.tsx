@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import {
-  ArrowDown,
-  Check,
-  ChevronDown,
-  ChevronRight,
-  SlidersHorizontal,
-  X,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, SlidersHorizontal, X } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
   categories,
@@ -22,15 +15,14 @@ import { HomeLoadMore } from "../../pages/Home/Home";
 
 export function CatalogView({
   categorySlug,
-  paginate = false,
 }: {
   categorySlug?: string;
   paginate?: boolean;
 }) {
   const [params, setParams] = useSearchParams();
   const [drawer, setDrawer] = useState(false);
-  const [visibleProducts, setVisibleProducts] = useState(9);
-  const [pagination, setPagination] = useState({ key: "", count: 9 });
+  const [visibleProducts, setVisibleProducts] = useState(30);
+
   useEffect(() => {
     if (!drawer) return;
 
@@ -98,10 +90,6 @@ export function CatalogView({
     rating: (a, b) => b.rating - a.rating,
   };
   const visible = [...result].sort(sorters[sort] || sorters.featured);
-  const paginationKey = `${categorySlug || ""}:${params.toString()}`;
-  const visibleCount = pagination.key === paginationKey ? pagination.count : 9;
-  const displayedProducts = paginate ? visible.slice(0, visibleCount) : visible;
-  const remainingProducts = visible.length - displayedProducts.length;
 
   const clearFilters = () =>
     setParams(query ? { q: query } : {}, { replace: true });
@@ -353,49 +341,15 @@ export function CatalogView({
               />
             )}
           </div>
-          <ProductGrid items={displayedProducts.slice(0, visibleProducts)} />
+          <ProductGrid items={visible.slice(0, visibleProducts)} />
           <HomeLoadMore
-            shown={Math.min(visibleProducts, displayedProducts.length)}
-            total={displayedProducts.length}
+            shown={Math.min(visibleProducts, visible.length)}
+            total={visible.length}
             batchSize={visibleProducts}
             onLoadMore={() =>
               setVisibleProducts((count) => count + visibleProducts)
             }
           />
-          {paginate && remainingProducts > 0 && (
-            <div className="load-more">
-              <span className="load-more-count">
-                Showing <strong>{displayedProducts.length}</strong> of{" "}
-                <strong>{visible.length}</strong> products
-              </span>
-              <motion.button
-                type="button"
-                className="load-more-button"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() =>
-                  setPagination({
-                    key: paginationKey,
-                    count: visibleCount + 9,
-                  })
-                }
-              >
-                <span>Load more products</span>
-                <ArrowDown size={16} />
-              </motion.button>
-            </div>
-          )}
-          {paginate && visible.length > 0 && remainingProducts === 0 && (
-            <div className="load-more load-more-complete" role="status">
-              <span className="load-more-count">
-                You&apos;ve explored all <strong>{visible.length}</strong>{" "}
-                products
-              </span>
-              <span className="load-more-complete-mark">
-                <Check size={15} />
-              </span>
-            </div>
-          )}
         </div>
       </div>
       <AnimatePresence>

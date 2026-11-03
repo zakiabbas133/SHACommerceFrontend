@@ -1,6 +1,7 @@
 // import { useState, type SubmitEvent } from "react";
 // import { ArrowRight, ArrowUpRight, ShieldCheck } from "lucide-react";
-import { ArrowUpRight, ShieldCheck } from "lucide-react";
+// import { ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories } from "../../data/products";
 
@@ -94,11 +95,11 @@ export function Footer() {
         </div> */}
       </div>
       <div className="footer-bottom">
-        <span>© 2026 NexaTech. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} NexaTech. All rights reserved.</span>
         <span>Secure checkout · Genuine products · Local support</span>
-        <span>
+        {/* <span>
           USD · English <ArrowUpRight size={11} />
-        </span>
+        </span> */}
       </div>
     </footer>
   );

@@ -178,6 +178,393 @@ export const categoryGroups = [
   },
 ];
 
+const paginationCatalogs: Record<
+  string,
+  {
+    brands: string[];
+    productLine: string;
+    variants: string[];
+    images: string[];
+    description: string;
+    priceRange: [number, number];
+  }
+> = {
+  processors: {
+    brands: ["AMD", "Intel"],
+    productLine: "Desktop Processor",
+    variants: [
+      "AMD Ryzen 5 5600",
+      "AMD Ryzen 5 7500F",
+      "AMD Ryzen 5 7600",
+      "AMD Ryzen 5 9600X",
+      "AMD Ryzen 7 5700X",
+      "AMD Ryzen 7 5700X3D",
+      "AMD Ryzen 7 7700",
+      "AMD Ryzen 7 7800X3D",
+      "AMD Ryzen 7 9700X",
+      "AMD Ryzen 7 9800X3D",
+      "AMD Ryzen 9 5900X",
+      "AMD Ryzen 9 5950X",
+      "AMD Ryzen 9 7900",
+      "AMD Ryzen 9 7900X",
+      "AMD Ryzen 9 7950X",
+      "AMD Ryzen 9 9900X",
+      "AMD Ryzen 9 9950X",
+      "AMD Ryzen 9 9950X3D",
+      "Intel Core i5-12400F",
+      "Intel Core i5-12600K",
+      "Intel Core i5-13400F",
+      "Intel Core i5-13600K",
+      "Intel Core i5-14400F",
+      "Intel Core i5-14600K",
+      "Intel Core Ultra 5 245K",
+      "Intel Core Ultra 7 265K",
+      "Intel Core Ultra 9 285K",
+      "Intel Core i7-13700K",
+      "Intel Core i7-14700K",
+      "Intel Core i9-14900K",
+    ],
+    images: [productPhotos.pc, productPhotos.motherboard],
+    description:
+      "High-performance desktop processor for gaming, creative work and everyday multitasking.",
+    priceRange: [95, 750],
+  },
+  "graphics-cards": {
+    brands: ["ASUS", "MSI", "Gigabyte", "ZOTAC", "PNY"],
+    productLine: "Graphics Card",
+    variants: [
+      "GeForce RTX 4060 8GB",
+      "GeForce RTX 4060 Ti 8GB",
+      "GeForce RTX 4070 SUPER 12GB",
+      "GeForce RTX 4070 Ti SUPER 16GB",
+      "GeForce RTX 4080 SUPER 16GB",
+      "GeForce RTX 5070 12GB",
+    ],
+    images: [productPhotos.graphics, productPhotos.pc],
+    description:
+      "Discrete graphics card designed for smooth gaming, streaming and GPU-accelerated creative applications.",
+    priceRange: [250, 2200],
+  },
+  memory: {
+    brands: [
+      "Corsair Vengeance",
+      "Kingston FURY Beast",
+      "G.Skill Ripjaws S5",
+      "Crucial Pro",
+      "TeamGroup T-Force Vulcan",
+    ],
+    productLine: "DDR5 Desktop Memory Kit",
+    variants: [
+      "16GB (2 x 8GB) 5600MT/s",
+      "32GB (2 x 16GB) 5600MT/s",
+      "32GB (2 x 16GB) 6000MT/s",
+      "32GB (2 x 16GB) 6400MT/s",
+      "64GB (2 x 32GB) 6000MT/s",
+      "64GB (2 x 32GB) 6400MT/s",
+    ],
+    images: [productPhotos.ram, productPhotos.motherboard],
+    description:
+      "Reliable DDR5 memory kit for compatible desktop systems. Check motherboard support for speed and capacity.",
+    priceRange: [35, 280],
+  },
+  storage: {
+    brands: [
+      "Samsung 990 PRO",
+      "WD_BLACK SN850X",
+      "Crucial T500",
+      "Kingston KC3000",
+      "Lexar NM790",
+    ],
+    productLine: "NVMe M.2 SSD",
+    variants: ["500GB", "1TB", "2TB", "4TB", "1TB with Heatsink", "2TB with Heatsink"],
+    images: [productPhotos.ssd, productPhotos.laptop],
+    description:
+      "High-speed solid-state storage for compatible desktop and laptop systems.",
+    priceRange: [45, 600],
+  },
+  motherboards: {
+    brands: ["ASUS", "MSI", "Gigabyte", "ASRock", "NZXT"],
+    productLine: "Desktop Motherboard",
+    variants: [
+      "AMD X870 ATX WiFi 7",
+      "AMD B850 ATX WiFi 7",
+      "AMD B650E ATX WiFi",
+      "Intel Z890 ATX WiFi 7",
+      "Intel B860 mATX WiFi",
+      "Intel Z790 ATX WiFi",
+    ],
+    images: [productPhotos.motherboard, productPhotos.pc],
+    description:
+      "Feature-rich desktop motherboard with modern connectivity and expansion. Confirm CPU socket and memory compatibility.",
+    priceRange: [120, 750],
+  },
+  gaming: {
+    brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
+    productLine: "",
+    variants: [
+      "Wireless Gaming Keyboard",
+      "RGB Mechanical Keyboard",
+      "Wireless Gaming Mouse",
+      "Surround Sound Gaming Headset",
+      "USB Streaming Microphone",
+      "Compact Mechanical Keyboard",
+    ],
+    images: [productPhotos.keyboard, productPhotos.mouse, productPhotos.headset],
+    description:
+      "Gaming gear designed for responsive play, comfortable sessions and a clean desktop setup.",
+    priceRange: [25, 350],
+  },
+  keyboards: {
+    brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
+    productLine: "Gaming Keyboard",
+    variants: [
+      "TKL Mechanical RGB",
+      "Full-Size Mechanical RGB",
+      "Wireless Mechanical TKL",
+      "Compact 60% Mechanical",
+      "Low-Profile Wireless",
+      "Hot-Swappable 75% Mechanical",
+    ],
+    images: [productPhotos.keyboard, productPhotos.pc],
+    description:
+      "Responsive mechanical keyboard with a considered layout for gaming and everyday use.",
+    priceRange: [45, 300],
+  },
+  mice: {
+    brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
+    productLine: "Gaming Mouse",
+    variants: [
+      "Wireless 25K DPI",
+      "Wired 26K DPI",
+      "Lightweight Wireless",
+      "Ergonomic Wireless",
+      "Ambidextrous RGB",
+      "Ultralight Esports",
+    ],
+    images: [productPhotos.mouse, productPhotos.keyboard],
+    description:
+      "Precision gaming mouse with adjustable sensitivity and a shape built for comfortable control.",
+    priceRange: [25, 180],
+  },
+  headsets: {
+    brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
+    productLine: "Gaming Headset",
+    variants: [
+      "Wireless Surround Sound",
+      "Wired 7.1 Surround",
+      "Wireless with Charging Base",
+      "USB-C Multi-Platform",
+      "Lightweight Stereo",
+      "Multi-Platform Wireless",
+    ],
+    images: [productPhotos.headset, productPhotos.audio, productPhotos.mic],
+    description:
+      "Comfortable gaming headset with clear voice chat and immersive audio for compatible devices.",
+    priceRange: [35, 350],
+  },
+  microphones: {
+    brands: ["Razer", "HyperX", "Blue", "Elgato", "Audio-Technica"],
+    productLine: "",
+    variants: [
+      "Condenser Mic with Desk Stand",
+      "Cardioid Streaming Microphone",
+      "USB-C Condenser Microphone",
+      "Broadcast Dynamic Microphone",
+      "RGB USB Gaming Microphone",
+      "Studio USB Microphone Kit",
+    ],
+    images: [productPhotos.mic, productPhotos.headset],
+    description:
+      "USB microphone for streaming, calls and voice recording, with a focused pickup pattern for clear speech.",
+    priceRange: [35, 400],
+  },
+  audio: {
+    brands: ["Sony", "Bose", "JBL", "Sennheiser", "Audio-Technica"],
+    productLine: "",
+    variants: [
+      "Noise Cancelling Over-Ear",
+      "Bluetooth Over-Ear Headphones",
+      "True Wireless Earbuds",
+      "Studio Monitor Headphones",
+      "Sport Bluetooth Earbuds",
+      "Hi-Res Audio Headphones",
+    ],
+    images: [productPhotos.audio, productPhotos.headset],
+    description:
+      "Everyday listening audio with comfortable fit and wireless connectivity for compatible devices.",
+    priceRange: [30, 550],
+  },
+  mobile: {
+    brands: ["Anker", "Belkin", "UGREEN", "Baseus", "Samsung"],
+    productLine: "",
+    variants: [
+      "10,000mAh USB-C Power Bank",
+      "20,000mAh Fast-Charge Power Bank",
+      "Magnetic Wireless Power Bank",
+      "30W USB-C Wall Charger",
+      "65W Multi-Port GaN Charger",
+      "Wireless Charging Stand",
+    ],
+    images: [productPhotos.phone, productPhotos.charger],
+    description:
+      "Practical mobile power accessory for charging compatible phones, tablets and everyday devices.",
+    priceRange: [15, 180],
+  },
+  chargers: {
+    brands: ["Anker", "Belkin", "UGREEN", "Baseus", "Samsung"],
+    productLine: "",
+    variants: [
+      "20W USB-C PD Compact Charger",
+      "30W USB-C PD Charger",
+      "45W USB-C Super Fast Charger",
+      "65W Dual-Port GaN Charger",
+      "100W 3-Port GaN Charger",
+      "140W USB-C Laptop Charger",
+    ],
+    images: [productPhotos.charger, productPhotos.phone, productPhotos.laptop],
+    description:
+      "Compact USB-C Power Delivery charger for compatible phones, tablets and laptops. Check the device's charging requirements.",
+    priceRange: [12, 160],
+  },
+  cables: {
+    brands: ["Anker", "Belkin", "UGREEN", "Baseus", "Cable Matters"],
+    productLine: "",
+    variants: [
+      "USB-C to USB-C 1m 60W",
+      "USB-C to USB-C 2m 100W",
+      "USB-C to USB-C 1m 240W",
+      "USB-C to Lightning 1m",
+      "USB-C to USB-A 2m",
+      "USB-C 4K Display Cable 2m",
+    ],
+    images: [productPhotos.charger, productPhotos.phone],
+    description:
+      "Durable charging and data cable for compatible devices. Supported charging speed depends on the connected charger and device.",
+    priceRange: [8, 80],
+  },
+  "laptop-parts": {
+    brands: ["Lenovo", "Dell", "HP", "ASUS", "Acer"],
+    productLine: "",
+    variants: [
+      "50Wh Laptop Replacement Battery",
+      "14-inch FHD Laptop Display Panel",
+      "15.6-inch FHD Laptop Display Panel",
+      "Laptop Cooling Fan Assembly",
+      "Backlit Laptop Replacement Keyboard",
+      "USB-C Laptop Charging Port Assembly",
+    ],
+    images: [productPhotos.laptop, productPhotos.charger],
+    description:
+      "Replacement component for selected laptop models. Verify the exact model and part number before ordering.",
+    priceRange: [25, 240],
+  },
+  "laptop-chargers": {
+    brands: ["Lenovo", "Dell", "HP", "ASUS", "Acer"],
+    productLine: "",
+    variants: [
+      "65W USB-C Power Adapter",
+      "90W USB-C Power Adapter",
+      "100W USB-C GaN Adapter",
+      "65W Slim Tip AC Adapter",
+      "90W Barrel Connector Adapter",
+      "120W Gaming Laptop Adapter",
+    ],
+    images: [productPhotos.charger, productPhotos.laptop],
+    description:
+      "Replacement laptop power adapter for supported models. Confirm connector type and required wattage before purchase.",
+    priceRange: [20, 180],
+  },
+  monitors: {
+    brands: ["ASUS TUF Gaming", "MSI MAG", "LG UltraGear", "Dell", "AOC"],
+    productLine: "Monitor",
+    variants: [
+      "24-inch FHD 180Hz IPS",
+      "27-inch QHD 165Hz IPS",
+      "27-inch 4K UHD IPS",
+      "32-inch 4K UHD 144Hz",
+      "34-inch Ultrawide QHD 165Hz",
+      "27-inch QHD OLED 240Hz",
+    ],
+    images: [productPhotos.monitor, productPhotos.pc],
+    description:
+      "High-quality display for work and entertainment. Check resolution, refresh rate and connection compatibility for your setup.",
+    priceRange: [100, 1600],
+  },
+};
+
+const paginationCategoryMap = new Map<string, Category>();
+categories.forEach((category) => {
+  paginationCategoryMap.set(category.id, category);
+  category.subcategories.forEach((subcategory) => {
+    const parent = categories.find((item) =>
+      item.subcategories.some((child) => child.id === subcategory.id),
+    );
+    if (parent) paginationCategoryMap.set(subcategory.id, parent);
+  });
+});
+
+const paginationProducts: Product[] = Array.from(
+  paginationCategoryMap.entries(),
+).flatMap(([categoryId, category], categoryIndex) => {
+  const catalog = paginationCatalogs[categoryId];
+  if (!catalog) return [];
+
+  return Array.from({ length: 30 }, (_, index) => {
+    const serial = String(index + 1).padStart(2, "0");
+    const variant = catalog.variants[index % catalog.variants.length];
+    const brand =
+      categoryId === "processors"
+        ? variant.startsWith("AMD")
+          ? "AMD"
+          : "Intel"
+        : catalog.brands[Math.floor(index / catalog.variants.length)];
+    const productName =
+      categoryId === "processors"
+        ? variant
+        : categoryId === "storage"
+          ? `${brand} ${variant} NVMe M.2 SSD`
+          : categoryId === "memory"
+            ? `${brand} ${variant} DDR5 Desktop Memory Kit`
+            : `${brand} ${variant}${catalog.productLine ? ` ${catalog.productLine}` : ""}`;
+    const name = productName;
+    const [minimumPrice, maximumPrice] = catalog.priceRange;
+    const price =
+      minimumPrice +
+      ((categoryIndex * 137 + index * 47) % (maximumPrice - minimumPrice + 1));
+
+    return {
+      id: `catalog-${categoryId}-${serial}`,
+      slug: `${categoryId}-${serial}-${variant
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/-+$/g, "")}`,
+      name,
+      model: variant,
+      sku: `NEXA-${categoryId.toUpperCase()}-${serial}`,
+      categoryId,
+      brand,
+      description: catalog.description,
+      price,
+      originalPrice: price + Math.max(5, Math.round(price * 0.15)),
+      rating: Number((4.1 + (index % 9) * 0.1).toFixed(1)),
+      reviews: 12 + index * 17,
+      stock: (index % 25) + 1,
+      featured: true,
+      isNew: true,
+      images: [
+        catalog.images[index % catalog.images.length],
+        catalog.images[(index + 1) % catalog.images.length],
+      ],
+      specs: {
+        Category: category.name,
+        Brand: brand,
+        Model: variant,
+      },
+      tags: [categoryId, "new arrival"],
+    };
+  });
+});
+
 export const products: Product[] = [
   {
     id: "p01",
@@ -731,6 +1118,7 @@ export const products: Product[] = [
     ],
     tags: ["laptop battery", "thinkpad", "replacement part"],
   },
+  ...paginationProducts,
 ];
 
 export const productCategory = (product: Product) =>

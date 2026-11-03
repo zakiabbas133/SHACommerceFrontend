@@ -808,6 +808,102 @@
   color: #07131d;
   background: #77dec2;
 }
+.scroll-top-button {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px;
+  border: 1px solid rgba(139, 218, 237, 0.38);
+  border-radius: 999px;
+  color: #effaff;
+  background:
+    radial-gradient(
+      circle at 22px 18px,
+      rgba(91, 214, 235, 0.2),
+      transparent 25px
+    ),
+    linear-gradient(135deg, #152b3c, #0d1724 74%);
+  box-shadow:
+    0 10px 28px rgba(11, 31, 48, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.13);
+  cursor: pointer;
+  isolation: isolate;
+}
+.scroll-top-button::before {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border: 1px solid rgba(81, 211, 230, 0.13);
+  border-radius: inherit;
+  content: "";
+  transition:
+    inset 0.25s ease,
+    border-color 0.25s ease;
+}
+.scroll-top-button:hover {
+  border-color: rgba(129, 231, 244, 0.72);
+  box-shadow:
+    0 13px 34px rgba(11, 31, 48, 0.34),
+    0 0 24px rgba(81, 211, 230, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.17);
+}
+.scroll-top-button:hover::before {
+  inset: -7px;
+  border-color: rgba(81, 211, 230, 0.25);
+}
+.scroll-top-icon {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: #9af0fa;
+  background: rgba(255, 255, 255, 0.055);
+}
+.scroll-top-icon > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: rotate(-90deg);
+}
+.scroll-top-track,
+.scroll-top-progress {
+  fill: none;
+  stroke-width: 1.6;
+}
+.scroll-top-track {
+  stroke: rgba(174, 211, 228, 0.22);
+}
+.scroll-top-progress {
+  stroke: #70e1ed;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.15s linear;
+}
+.scroll-top-arrow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease;
+}
+.scroll-top-button:hover .scroll-top-arrow {
+  transform: translateY(-2px);
+}
+.scroll-top-label {
+  color: #e8f4fa;
+  font: 600 11px var(--space-font);
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 @media (min-width: 981px) and (max-width: 1120px) {
   .header-main {
