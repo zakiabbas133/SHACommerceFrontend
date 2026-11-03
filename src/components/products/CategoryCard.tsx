@@ -17,11 +17,11 @@ export function CategoryCard({
         <Cpu size={16} />
       </span>
       <div className="category-card-copy">
-        <span>{String(count).padStart(2, "0")} products</span>
+        {/* <span>{String(count).padStart(2, "0")} products</span> */}
         <h3>{category.name}</h3>
-        <p>{category.description}</p>
+        {/* <p>{category.description}</p> */}
         <span className="category-explore">
-          Shop category <ArrowUpRight size={14} />
+          Shop now <ArrowUpRight size={14} />
         </span>
       </div>
     </Link>
