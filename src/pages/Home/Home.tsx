@@ -146,11 +146,11 @@ export function Home() {
           ))}
         </div>
         <HomeLoadMore
+          categoryOrProduct={"cat"}
           shown={Math.min(visibleCategories, categories.length)}
           total={categories.length}
-          batchSize={visibleCategories}
           onLoadMore={() =>
-            setVisibleCategories((count) => count + visibleCategories)
+            setVisibleCategories((count) => count + 6)
           }
         />
       </section>
@@ -162,11 +162,11 @@ export function Home() {
         />
         <ProductGrid items={featured.slice(0, visibleFeatured)} />
         <HomeLoadMore
+          categoryOrProduct={"prod"}
           shown={Math.min(visibleFeatured, featured.length)}
           total={featured.length}
-          batchSize={visibleFeatured}
           onLoadMore={() =>
-            setVisibleFeatured((count) => count + visibleFeatured)
+            setVisibleFeatured((count) => count + 8)
           }
         />
       </section>
@@ -191,7 +191,9 @@ export function Home() {
           <img src={deals[0]?.images[0]} alt={deals[0]?.name} />
           <div className="deal-price-chip">
             <span>THIS WEEK'S PICK</span>
-            <strong>{deals[0] ? formatPrice(deals[0].price) : "Rs. — /-"}</strong>
+            <strong>
+              {deals[0] ? formatPrice(deals[0].price) : "Rs. — /-"}
+            </strong>
             <del>
               {deals[0]
                 ? formatPrice(deals[0].originalPrice || deals[0].price)
@@ -209,10 +211,10 @@ export function Home() {
         />
         <ProductGrid items={deals.slice(0, visibleDeals)} />
         <HomeLoadMore
+          categoryOrProduct={"prod"}
           shown={Math.min(visibleDeals, deals.length)}
           total={deals.length}
-          batchSize={visibleDeals}
-          onLoadMore={() => setVisibleDeals((count) => count + visibleDeals)}
+          onLoadMore={() => setVisibleDeals((count) => count + 8)}
         />
       </section>
       <section className="gaming-feature">
@@ -261,11 +263,11 @@ export function Home() {
         />
         <ProductGrid items={newArrivals.slice(0, visibleNewArrivals)} />
         <HomeLoadMore
+          categoryOrProduct={"prod"}
           shown={Math.min(visibleNewArrivals, newArrivals.length)}
           total={newArrivals.length}
-          batchSize={visibleNewArrivals}
           onLoadMore={() =>
-            setVisibleNewArrivals((count) => count + visibleNewArrivals)
+            setVisibleNewArrivals((count) => count + 8)
           }
         />
       </section>
@@ -336,24 +338,22 @@ export function Home() {
 }
 
 export function HomeLoadMore({
+  categoryOrProduct,
   shown,
   total,
-  batchSize,
   onLoadMore,
 }: {
+  categoryOrProduct: string;
   shown: number;
   total: number;
-  batchSize: number;
   onLoadMore: () => void;
 }) {
-  if (total <= batchSize) return null;
-
   const remaining = total - shown;
   return remaining > 0 ? (
     <div className="load-more">
       <span className="load-more-count">
         Showing <strong>{shown}</strong> of <strong>{total}</strong>{" "}
-        {batchSize === 6 ? "categories" : "products"}
+        {categoryOrProduct === "cat" ? "categories" : "products"}
       </span>
       <motion.button
         type="button"
@@ -362,7 +362,9 @@ export function HomeLoadMore({
         whileTap={{ scale: 0.98 }}
         onClick={onLoadMore}
       >
-        <span>Load more {batchSize === 6 ? "categories" : "products"}</span>
+        <span>
+          Load more {categoryOrProduct === "cat" ? "categories" : "products"}
+        </span>
         <ArrowDown size={16} />
       </motion.button>
     </div>
@@ -370,7 +372,7 @@ export function HomeLoadMore({
     <div className="load-more load-more-complete" role="status">
       <span className="load-more-count">
         You&apos;ve explored all <strong>{total}</strong>{" "}
-        {batchSize === 6 ? "categories" : "products"}
+        {categoryOrProduct === "cat" ? "categories" : "products"}
       </span>
       <span className="load-more-complete-mark">
         <Check size={15} />

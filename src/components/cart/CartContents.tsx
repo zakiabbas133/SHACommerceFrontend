@@ -51,6 +51,8 @@ export function CartContents({ onClose }: { onClose?: () => void }) {
         <EmptyState
           title="Your cart is waiting for its first upgrade."
           text="Explore the latest components and accessories."
+          showIcon={false}
+          showButton={false}
         />
         <Link to="/shop" className="button button-primary" onClick={onClose}>
           Shop products <ArrowRight size={15} />

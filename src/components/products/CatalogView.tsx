@@ -343,11 +343,11 @@ export function CatalogView({
           </div>
           <ProductGrid items={visible.slice(0, visibleProducts)} />
           <HomeLoadMore
+            categoryOrProduct={"prod"}
             shown={Math.min(visibleProducts, visible.length)}
             total={visible.length}
-            batchSize={visibleProducts}
             onLoadMore={() =>
-              setVisibleProducts((count) => count + visibleProducts)
+              setVisibleProducts((count) => count + 30)
             }
           />
         </div>

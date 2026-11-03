@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories, productsInCategory } from "../../data/products";
 import { CategoryCard } from "../../components/products/CategoryCard";
+import { HomeLoadMore } from "../Home/Home";
 import "./Categories.css";
 
 export function Categories() {
+  const [visibleNewArrivals, setVisibleNewArrivals] = useState(8);
   return (
     <div className="categories-page page-width">
       <div className="page-intro">
@@ -23,6 +26,14 @@ export function Categories() {
           />
         ))}
       </div>
+      <HomeLoadMore
+        categoryOrProduct={"cat"}
+        shown={Math.min(visibleNewArrivals, categories.length)}
+        total={categories.length}
+        onLoadMore={() =>
+          setVisibleNewArrivals((count) => count + 6)
+        }
+      />
       <div className="category-help">
         <span>Not sure where to start?</span>
         <p>
