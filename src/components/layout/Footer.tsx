@@ -98,7 +98,7 @@ export function Footer() {
         <span>© {new Date().getFullYear()} NexaTech. All rights reserved.</span>
         <span>Secure checkout · Genuine products · Local support</span>
         {/* <span>
-          USD · English <ArrowUpRight size={11} />
+          PKR · English <ArrowUpRight size={11} />
         </span> */}
       </div>
     </footer>

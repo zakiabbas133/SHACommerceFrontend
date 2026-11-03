@@ -13,7 +13,12 @@ import {
   X,
 } from "lucide-react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { categories, categoryGroups, products } from "../../data/products";
+import {
+  categories,
+  categoryGroups,
+  formatPrice,
+  products,
+} from "../../data/products";
 import { useShop } from "../../store/useShop";
 import { useStoreUI } from "../../context/StoreUIContext";
 
@@ -287,7 +292,7 @@ export function Header() {
                               {product.brand} · {product.model}
                             </small>
                           </span>
-                          <strong>${product.price}</strong>
+                          <strong>{formatPrice(product.price)}</strong>
                         </Link>
                       ))}
                     </>

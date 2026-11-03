@@ -191,7 +191,7 @@ export function Home() {
           <img src={deals[0]?.images[0]} alt={deals[0]?.name} />
           <div className="deal-price-chip">
             <span>THIS WEEK'S PICK</span>
-            <strong>{deals[0] ? formatPrice(deals[0].price) : "$—"}</strong>
+            <strong>{deals[0] ? formatPrice(deals[0].price) : "Rs. — /-"}</strong>
             <del>
               {deals[0]
                 ? formatPrice(deals[0].originalPrice || deals[0].price)

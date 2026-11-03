@@ -227,7 +227,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.pc, productPhotos.motherboard],
     description:
       "High-performance desktop processor for gaming, creative work and everyday multitasking.",
-    priceRange: [95, 750],
+    priceRange: [27000, 210000],
   },
   "graphics-cards": {
     brands: ["ASUS", "MSI", "Gigabyte", "ZOTAC", "PNY"],
@@ -243,7 +243,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.graphics, productPhotos.pc],
     description:
       "Discrete graphics card designed for smooth gaming, streaming and GPU-accelerated creative applications.",
-    priceRange: [250, 2200],
+    priceRange: [70000, 616000],
   },
   memory: {
     brands: [
@@ -265,7 +265,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.ram, productPhotos.motherboard],
     description:
       "Reliable DDR5 memory kit for compatible desktop systems. Check motherboard support for speed and capacity.",
-    priceRange: [35, 280],
+    priceRange: [10000, 78000],
   },
   storage: {
     brands: [
@@ -280,7 +280,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.ssd, productPhotos.laptop],
     description:
       "High-speed solid-state storage for compatible desktop and laptop systems.",
-    priceRange: [45, 600],
+    priceRange: [13000, 168000],
   },
   motherboards: {
     brands: ["ASUS", "MSI", "Gigabyte", "ASRock", "NZXT"],
@@ -296,7 +296,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.motherboard, productPhotos.pc],
     description:
       "Feature-rich desktop motherboard with modern connectivity and expansion. Confirm CPU socket and memory compatibility.",
-    priceRange: [120, 750],
+    priceRange: [34000, 210000],
   },
   gaming: {
     brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
@@ -312,7 +312,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.keyboard, productPhotos.mouse, productPhotos.headset],
     description:
       "Gaming gear designed for responsive play, comfortable sessions and a clean desktop setup.",
-    priceRange: [25, 350],
+    priceRange: [7000, 98000],
   },
   keyboards: {
     brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
@@ -328,7 +328,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.keyboard, productPhotos.pc],
     description:
       "Responsive mechanical keyboard with a considered layout for gaming and everyday use.",
-    priceRange: [45, 300],
+    priceRange: [13000, 84000],
   },
   mice: {
     brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
@@ -344,7 +344,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.mouse, productPhotos.keyboard],
     description:
       "Precision gaming mouse with adjustable sensitivity and a shape built for comfortable control.",
-    priceRange: [25, 180],
+    priceRange: [7000, 50000],
   },
   headsets: {
     brands: ["Logitech G", "Razer", "SteelSeries", "HyperX", "Corsair"],
@@ -360,7 +360,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.headset, productPhotos.audio, productPhotos.mic],
     description:
       "Comfortable gaming headset with clear voice chat and immersive audio for compatible devices.",
-    priceRange: [35, 350],
+    priceRange: [10000, 98000],
   },
   microphones: {
     brands: ["Razer", "HyperX", "Blue", "Elgato", "Audio-Technica"],
@@ -376,7 +376,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.mic, productPhotos.headset],
     description:
       "USB microphone for streaming, calls and voice recording, with a focused pickup pattern for clear speech.",
-    priceRange: [35, 400],
+    priceRange: [10000, 112000],
   },
   audio: {
     brands: ["Sony", "Bose", "JBL", "Sennheiser", "Audio-Technica"],
@@ -392,7 +392,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.audio, productPhotos.headset],
     description:
       "Everyday listening audio with comfortable fit and wireless connectivity for compatible devices.",
-    priceRange: [30, 550],
+    priceRange: [8000, 154000],
   },
   mobile: {
     brands: ["Anker", "Belkin", "UGREEN", "Baseus", "Samsung"],
@@ -408,7 +408,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.phone, productPhotos.charger],
     description:
       "Practical mobile power accessory for charging compatible phones, tablets and everyday devices.",
-    priceRange: [15, 180],
+    priceRange: [4000, 50000],
   },
   chargers: {
     brands: ["Anker", "Belkin", "UGREEN", "Baseus", "Samsung"],
@@ -424,7 +424,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.charger, productPhotos.phone, productPhotos.laptop],
     description:
       "Compact USB-C Power Delivery charger for compatible phones, tablets and laptops. Check the device's charging requirements.",
-    priceRange: [12, 160],
+    priceRange: [3000, 45000],
   },
   cables: {
     brands: ["Anker", "Belkin", "UGREEN", "Baseus", "Cable Matters"],
@@ -440,7 +440,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.charger, productPhotos.phone],
     description:
       "Durable charging and data cable for compatible devices. Supported charging speed depends on the connected charger and device.",
-    priceRange: [8, 80],
+    priceRange: [2000, 22000],
   },
   "laptop-parts": {
     brands: ["Lenovo", "Dell", "HP", "ASUS", "Acer"],
@@ -456,7 +456,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.laptop, productPhotos.charger],
     description:
       "Replacement component for selected laptop models. Verify the exact model and part number before ordering.",
-    priceRange: [25, 240],
+    priceRange: [7000, 67000],
   },
   "laptop-chargers": {
     brands: ["Lenovo", "Dell", "HP", "ASUS", "Acer"],
@@ -472,7 +472,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.charger, productPhotos.laptop],
     description:
       "Replacement laptop power adapter for supported models. Confirm connector type and required wattage before purchase.",
-    priceRange: [20, 180],
+    priceRange: [6000, 50000],
   },
   monitors: {
     brands: ["ASUS TUF Gaming", "MSI MAG", "LG UltraGear", "Dell", "AOC"],
@@ -488,7 +488,7 @@ const paginationCatalogs: Record<
     images: [productPhotos.monitor, productPhotos.pc],
     description:
       "High-quality display for work and entertainment. Check resolution, refresh rate and connection compatibility for your setup.",
-    priceRange: [100, 1600],
+    priceRange: [28000, 448000],
   },
 };
 
@@ -528,9 +528,10 @@ const paginationProducts: Product[] = Array.from(
             : `${brand} ${variant}${catalog.productLine ? ` ${catalog.productLine}` : ""}`;
     const name = productName;
     const [minimumPrice, maximumPrice] = catalog.priceRange;
+    const priceSteps = Math.floor((maximumPrice - minimumPrice) / 500);
     const price =
       minimumPrice +
-      ((categoryIndex * 137 + index * 47) % (maximumPrice - minimumPrice + 1));
+      ((categoryIndex * 137 + index * 47) % (priceSteps + 1)) * 500;
 
     return {
       id: `catalog-${categoryId}-${serial}`,
@@ -576,8 +577,8 @@ export const products: Product[] = [
     brand: "AMD",
     description:
       "An 8-core desktop processor with AMD 3D V-Cache technology, built for exceptional gaming performance and responsive everyday computing.",
-    price: 389,
-    originalPrice: 449,
+    price: 108900,
+    originalPrice: 125700,
     rating: 4.9,
     reviews: 284,
     stock: 18,
@@ -608,7 +609,7 @@ export const products: Product[] = [
     brand: "Intel",
     description:
       "A high-performance unlocked desktop CPU for demanding gaming, content creation and multitasking workloads.",
-    price: 369,
+    price: 103300,
     rating: 4.8,
     reviews: 196,
     stock: 11,
@@ -638,8 +639,8 @@ export const products: Product[] = [
     brand: "MSI",
     description:
       "A quiet, efficient graphics card for high-refresh 1440p gaming, powered by NVIDIA Ada Lovelace architecture.",
-    price: 629,
-    originalPrice: 679,
+    price: 176100,
+    originalPrice: 190100,
     rating: 4.8,
     reviews: 143,
     stock: 7,
@@ -668,7 +669,7 @@ export const products: Product[] = [
     brand: "Gigabyte",
     description:
       "A 16 GB graphics card designed for fluid high-resolution gaming with a triple-fan cooling design.",
-    price: 519,
+    price: 145300,
     rating: 4.7,
     reviews: 88,
     stock: 9,
@@ -696,8 +697,8 @@ export const products: Product[] = [
     brand: "Corsair",
     description:
       "A matched 2 × 16 GB DDR5 kit with a low-profile heat spreader, tuned for modern desktop performance.",
-    price: 109,
-    originalPrice: 129,
+    price: 30500,
+    originalPrice: 36100,
     rating: 4.9,
     reviews: 321,
     stock: 24,
@@ -728,7 +729,7 @@ export const products: Product[] = [
     brand: "Kingston",
     description:
       "A compact DDR5 SODIMM module for compatible laptops and small-form-factor systems.",
-    price: 54,
+    price: 15100,
     rating: 4.7,
     reviews: 82,
     stock: 16,
@@ -755,8 +756,8 @@ export const products: Product[] = [
     brand: "Samsung",
     description:
       "A high-performance PCIe 4.0 NVMe drive for responsive game loads and demanding creator workflows.",
-    price: 179,
-    originalPrice: 209,
+    price: 50100,
+    originalPrice: 58500,
     rating: 4.9,
     reviews: 267,
     stock: 31,
@@ -785,7 +786,7 @@ export const products: Product[] = [
     brand: "ASUS",
     description:
       "An AM5 ATX motherboard with Wi-Fi 6, DDR5 support and a robust power design for Ryzen desktop builds.",
-    price: 219,
+    price: 61300,
     rating: 4.8,
     reviews: 107,
     stock: 8,
@@ -813,7 +814,7 @@ export const products: Product[] = [
     brand: "Logitech G",
     description:
       "A lightweight wireless esports mouse with a precise HERO 2 sensor and USB-C charging.",
-    price: 149,
+    price: 41700,
     rating: 4.8,
     reviews: 193,
     stock: 14,
@@ -839,8 +840,8 @@ export const products: Product[] = [
     brand: "Razer",
     description:
       "A full-size mechanical gaming keyboard with programmable controls, per-key lighting and a magnetic wrist rest.",
-    price: 229,
-    originalPrice: 249,
+    price: 64100,
+    originalPrice: 69700,
     rating: 4.7,
     reviews: 76,
     stock: 12,
@@ -864,7 +865,7 @@ export const products: Product[] = [
     brand: "HyperX",
     description:
       "A USB condenser microphone with four selectable polar patterns, onboard tap-to-mute and a built-in shock mount.",
-    price: 139,
+    price: 38900,
     rating: 4.8,
     reviews: 211,
     stock: 6,
@@ -890,7 +891,7 @@ export const products: Product[] = [
     brand: "Razer",
     description:
       "Wireless esports headphones with a detachable microphone and comfortable over-ear fit for long sessions.",
-    price: 179,
+    price: 50100,
     rating: 4.7,
     reviews: 119,
     stock: 10,
@@ -915,7 +916,7 @@ export const products: Product[] = [
     brand: "JBL",
     description:
       "Over-ear wireless headphones with adaptive noise cancelling, ambient sound modes and long-lasting battery life.",
-    price: 149,
+    price: 41700,
     rating: 4.6,
     reviews: 68,
     stock: 15,
@@ -939,8 +940,8 @@ export const products: Product[] = [
     brand: "Anker",
     description:
       "A compact multi-port USB-C desktop charger with Power Delivery for charging laptops, phones and accessories.",
-    price: 79,
-    originalPrice: 99,
+    price: 22100,
+    originalPrice: 27700,
     rating: 4.8,
     reviews: 174,
     stock: 27,
@@ -968,8 +969,8 @@ export const products: Product[] = [
     brand: "Samsung",
     description:
       "A compact flagship smartphone with a vivid AMOLED display, versatile camera system and all-day intelligent performance.",
-    price: 699,
-    originalPrice: 799,
+    price: 195700,
+    originalPrice: 223700,
     rating: 4.7,
     reviews: 152,
     stock: 5,
@@ -994,7 +995,7 @@ export const products: Product[] = [
     brand: "ASUS",
     description:
       "A 27-inch QHD gaming display with a fast IPS panel, high refresh rate and Adaptive-Sync support.",
-    price: 269,
+    price: 75300,
     rating: 4.7,
     reviews: 91,
     stock: 8,
@@ -1020,7 +1021,7 @@ export const products: Product[] = [
     brand: "Crucial",
     description:
       "A practical PCIe 4.0 NVMe storage upgrade for compatible desktops and laptops.",
-    price: 74,
+    price: 20700,
     rating: 4.6,
     reviews: 203,
     stock: 30,
@@ -1048,7 +1049,7 @@ export const products: Product[] = [
     brand: "UGREEN",
     description:
       "A compact USB-C hub that adds HDMI, USB-A, USB-C data and card reader connectivity to compatible devices.",
-    price: 39,
+    price: 10900,
     rating: 4.6,
     reviews: 139,
     stock: 22,
@@ -1074,7 +1075,7 @@ export const products: Product[] = [
     brand: "Dell",
     description:
       "A genuine 65 W USB-C power adapter for supported Dell laptops and other USB-C Power Delivery devices.",
-    price: 49,
+    price: 13700,
     rating: 4.5,
     reviews: 58,
     stock: 13,
@@ -1101,7 +1102,7 @@ export const products: Product[] = [
     brand: "Lenovo",
     description:
       "A replacement internal battery for selected ThinkPad T14 configurations. Verify the machine type and battery part number before ordering.",
-    price: 89,
+    price: 24900,
     rating: 4.4,
     reviews: 21,
     stock: 4,
@@ -1153,11 +1154,9 @@ export const productsInCategory = (categoryId: string) => {
   return products.filter((product) => ids.has(product.categoryId));
 };
 export const formatPrice = (price: number) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 2,
-  }).format(price);
+  `Rs. ${new Intl.NumberFormat("en-PK", {
+    maximumFractionDigits: 0,
+  }).format(price)}/-`;
 export const discountPercent = (product: Product) =>
   product.originalPrice
     ? Math.round((1 - product.price / product.originalPrice) * 100)
