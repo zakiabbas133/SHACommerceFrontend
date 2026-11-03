@@ -75,9 +75,7 @@ export default function App() {
   return (
     <ShopProvider>
       <BrowserRouter>
-        <Suspense
-          fallback={<WebsiteLoader />}
-        >
+        <Suspense fallback={<WebsiteLoader />}>
           <Routes>
             <Route element={<StoreLayout />}>
               <Route index element={<Home />} />

@@ -148,8 +148,10 @@ export function Home() {
         <HomeLoadMore
           shown={Math.min(visibleCategories, categories.length)}
           total={categories.length}
-          batchSize={6}
-          onLoadMore={() => setVisibleCategories((count) => count + 6)}
+          batchSize={visibleCategories}
+          onLoadMore={() =>
+            setVisibleCategories((count) => count + visibleCategories)
+          }
         />
       </section>
       <section className="section featured-section page-width">
@@ -162,8 +164,10 @@ export function Home() {
         <HomeLoadMore
           shown={Math.min(visibleFeatured, featured.length)}
           total={featured.length}
-          batchSize={8}
-          onLoadMore={() => setVisibleFeatured((count) => count + 9)}
+          batchSize={visibleFeatured}
+          onLoadMore={() =>
+            setVisibleFeatured((count) => count + visibleFeatured)
+          }
         />
       </section>
       <section className="deal-banner">
@@ -207,8 +211,8 @@ export function Home() {
         <HomeLoadMore
           shown={Math.min(visibleDeals, deals.length)}
           total={deals.length}
-          batchSize={8}
-          onLoadMore={() => setVisibleDeals((count) => count + 8)}
+          batchSize={visibleDeals}
+          onLoadMore={() => setVisibleDeals((count) => count + visibleDeals)}
         />
       </section>
       <section className="gaming-feature">
@@ -259,8 +263,10 @@ export function Home() {
         <HomeLoadMore
           shown={Math.min(visibleNewArrivals, newArrivals.length)}
           total={newArrivals.length}
-          batchSize={8}
-          onLoadMore={() => setVisibleNewArrivals((count) => count + 8)}
+          batchSize={visibleNewArrivals}
+          onLoadMore={() =>
+            setVisibleNewArrivals((count) => count + visibleNewArrivals)
+          }
         />
       </section>
       <section className="upgrade-panels page-width">

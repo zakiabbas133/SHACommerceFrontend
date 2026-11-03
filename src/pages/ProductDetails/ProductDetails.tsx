@@ -102,7 +102,7 @@ export function ProductDetails() {
                 onClick={() => setImageIndex(index)}
                 aria-label={`View product image ${index + 1}`}
               >
-                <img src={image} alt="" style={{borderRadius: 6}} />
+                <img src={image} alt="" style={{ borderRadius: 6 }} />
               </button>
             ))}
           </div>

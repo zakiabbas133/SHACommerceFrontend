@@ -478,26 +478,31 @@ function validateCheckout(
     errors.email =
       "Enter an email address so we can send your order confirmation.";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value("email"))) {
-    errors.email = "Check your email address. It should look like name@example.com.";
+    errors.email =
+      "Check your email address. It should look like name@example.com.";
   }
   if (!/^\+923\d{9}$/.test(value("phone"))) {
     errors.phone =
       "Enter 10 digits after +92. Pakistani mobile numbers start with 3, for example 3001234567.";
   }
   if (!value("firstName")) {
-    errors.firstName = "Enter your first name so the parcel is addressed to you.";
+    errors.firstName =
+      "Enter your first name so the parcel is addressed to you.";
   }
   if (!value("lastName")) {
-    errors.lastName = "Enter your last name as it should appear on the delivery.";
+    errors.lastName =
+      "Enter your last name as it should appear on the delivery.";
   }
   if (!value("address")) {
-    errors.address = "Enter the street address where you want your order delivered.";
+    errors.address =
+      "Enter the street address where you want your order delivered.";
   }
   if (!value("city")) {
     errors.city = "Enter the city or town for this delivery address.";
   }
   if (!value("postalCode")) {
-    errors.postalCode = "Enter your postal or ZIP code to help the courier find you.";
+    errors.postalCode =
+      "Enter your postal or ZIP code to help the courier find you.";
   }
   if (!sameAddress && !value("billingAddress")) {
     errors.billingAddress = "Enter the address used for your billing details.";

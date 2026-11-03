@@ -209,7 +209,10 @@
   border-radius: 50%;
   color: #526174;
   background: #fff;
-  transition: color 0.18s, background 0.18s, border-color 0.18s;
+  transition:
+    color 0.18s,
+    background 0.18s,
+    border-color 0.18s;
 }
 .cart-drawer .drawer-heading .icon-button:hover {
   border-color: #dce8f8;
@@ -304,7 +307,9 @@
   height: 28px;
   place-items: center;
   border-radius: 7px;
-  transition: color 0.18s, background 0.18s;
+  transition:
+    color 0.18s,
+    background 0.18s;
 }
 .cart-drawer .remove-line:hover {
   color: #c34f50;
@@ -767,7 +772,9 @@
   color: #26374c;
   background: #fff;
   font-size: 13px;
-  transition: border-color 0.18s, box-shadow 0.18s;
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
 }
 .checkout-page .form-field input::placeholder {
   color: #a4aebb;
@@ -785,7 +792,9 @@
   border: 1px solid #dce3eb;
   border-radius: 8px;
   background: #fff;
-  transition: border-color 0.18s, box-shadow 0.18s;
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
 }
 .phone-input:focus-within {
   border-color: #83a9e3;

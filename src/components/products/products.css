@@ -491,7 +491,10 @@
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: box-shadow 0.22s, border-color 0.22s, background 0.22s;
+  transition:
+    box-shadow 0.22s,
+    border-color 0.22s,
+    background 0.22s;
 }
 .load-more-button::before {
   position: absolute;
@@ -543,7 +546,9 @@
   background: #edf8f2;
 }
 @keyframes load-more-bob {
-  50% { transform: translateY(3px); }
+  50% {
+    transform: translateY(3px);
+  }
 }
 
 @media (max-width: 980px) {

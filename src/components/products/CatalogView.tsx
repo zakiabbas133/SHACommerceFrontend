@@ -29,7 +29,7 @@ export function CatalogView({
 }) {
   const [params, setParams] = useSearchParams();
   const [drawer, setDrawer] = useState(false);
-  const [visibleDeals, setVisibleDeals] = useState(9);
+  const [visibleProducts, setVisibleProducts] = useState(9);
   const [pagination, setPagination] = useState({ key: "", count: 9 });
   useEffect(() => {
     if (!drawer) return;
@@ -353,12 +353,14 @@ export function CatalogView({
               />
             )}
           </div>
-          <ProductGrid items={displayedProducts.slice(0, visibleDeals)} />
+          <ProductGrid items={displayedProducts.slice(0, visibleProducts)} />
           <HomeLoadMore
-            shown={Math.min(visibleDeals, displayedProducts.length)}
+            shown={Math.min(visibleProducts, displayedProducts.length)}
             total={displayedProducts.length}
-            batchSize={visibleDeals}
-            onLoadMore={() => setVisibleDeals((count) => count + visibleDeals)}
+            batchSize={visibleProducts}
+            onLoadMore={() =>
+              setVisibleProducts((count) => count + visibleProducts)
+            }
           />
           {paginate && remainingProducts > 0 && (
             <div className="load-more">
