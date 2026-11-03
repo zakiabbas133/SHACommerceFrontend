@@ -5,7 +5,7 @@ import "./products.css";
 
 export function CategoryCard({
   category,
-  count,
+  // count,
 }: {
   category: Category;
   count: number;
