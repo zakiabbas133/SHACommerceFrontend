@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { CartContents } from "./CartContents";
+import "../../styles/commerce.css";
+import "../products/products.css";
 
 export function CartDrawer({
   open,
@@ -9,6 +12,17 @@ export function CartDrawer({
   open: boolean;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
   return (
     <AnimatePresence>
       {open && (

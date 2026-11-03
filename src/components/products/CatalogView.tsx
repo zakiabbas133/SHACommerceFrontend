@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown, ChevronRight, SlidersHorizontal, X } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -15,6 +15,19 @@ import "./catalog.css";
 export function CatalogView({ categorySlug }: { categorySlug?: string }) {
   const [params, setParams] = useSearchParams();
   const [drawer, setDrawer] = useState(false);
+  useEffect(() => {
+    if (!drawer) return;
+
+    const bodyOverflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = rootOverflow;
+    };
+  }, [drawer]);
   const category = categorySlug ? categoryBySlug(categorySlug) : undefined;
   const query = params.get("q") || "";
   const preset = params.get("filter");

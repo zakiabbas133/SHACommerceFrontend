@@ -66,23 +66,42 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 7px;
-  color: #8390a0;
-  font-size: 14px;
+  gap: 9px;
+  padding: 5px 11px 5px 12px;
+  border: 1px solid #dfe6ef;
+  border-radius: 10px;
+  color: #8290a1;
+  background: linear-gradient(180deg, #fff, #fbfcfe);
+  box-shadow: 0 2px 6px rgba(27, 44, 66, 0.035);
+  font-size: 12px;
+  font-weight: 500;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+}
+.sort-control:hover {
+  border-color: #cbd8e8;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(27, 44, 66, 0.07);
+}
+.sort-control:focus-within {
+  border-color: #8eafe0;
+  box-shadow: 0 0 0 3px rgba(58, 125, 255, 0.1);
 }
 .sort-control select {
   appearance: none;
-  padding: 7px 16px 7px 0;
+  min-height: 28px;
+  padding: 0 20px 0 0;
   border: 0;
   outline: 0;
-  color: #344255;
+  color: #26374c;
   background: transparent;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
 }
 .sort-control svg {
   position: absolute;
-  right: 0;
+  right: 10px;
+  color: #77889d;
   pointer-events: none;
 }
 .catalog-layout {
@@ -205,18 +224,119 @@
   padding-bottom: 12px;
 }
 .filter-drawer .filter-stack {
-  overflow: auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 24px;
+  scrollbar-color: #cbd4df transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.filter-drawer .drawer-heading {
+  flex: none;
+  padding: 22px 24px 18px;
+  margin: 0;
+  border-bottom-color: #edf0f4;
+  background: #fff;
+}
+.filter-drawer .drawer-heading h2 {
+  color: #172436;
+  font-size: 22px;
+  letter-spacing: -0.035em;
+}
+.filter-drawer .drawer-heading .icon-button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #e6ebf1;
+  border-radius: 50%;
+  color: #526174;
+  background: #fff;
+  transition: color 0.18s, background 0.18s, border-color 0.18s;
+}
+.filter-drawer .drawer-heading .icon-button:hover {
+  border-color: #dce8f8;
+  color: #2f70d5;
+  background: #f3f7fd;
+}
+.filter-drawer .filter-block h3 {
+  color: #293b52;
+  font-size: 13px;
+}
+.filter-drawer .filter-block select,
+.filter-drawer .spec-filter-input {
+  height: 40px;
+  padding: 0 11px;
+  border-color: #e0e6ed;
+  border-radius: 8px;
+  color: #34465d;
+  background: #fbfcfe;
+  font-size: 13px;
+}
+.filter-drawer .filter-block select:focus,
+.filter-drawer .spec-filter-input:focus {
+  border-color: #8eafe0;
+  box-shadow: 0 0 0 3px rgba(58, 125, 255, 0.1);
+}
+.filter-drawer .filter-range-heading {
+  flex-wrap: wrap;
+}
+.filter-drawer .filter-range-heading span {
+  color: #718196;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.filter-drawer .filter-hint {
+  font-size: 12px;
+}
+.filter-drawer .filter-checks {
+  padding: 16px 0;
+}
+.filter-drawer .filter-checks label {
+  gap: 9px;
+  color: #46576c;
+  font-size: 13px;
+}
+.filter-drawer .filter-checks input {
+  width: 15px;
+  height: 15px;
 }
 .filter-drawer .filter-apply {
-  width: 100%;
-  margin-top: auto;
+  min-height: 49px;
+  margin: 14px 24px 22px;
   flex: none;
+  align-self: stretch;
+  width: auto;
+  border-radius: 9px;
+  background: #17283e;
+  box-shadow: 0 7px 16px rgba(23, 40, 62, 0.14);
+}
+.filter-drawer .filter-apply:hover {
+  background: #263d59;
 }
 .filter-drawer .filter-trigger {
   display: none;
 }
 .filter-drawer .clear-filters {
-  margin-bottom: 18px;
+  margin: 16px 0 18px;
+}
+@media (max-width: 520px) {
+  .filter-drawer {
+    width: min(420px, 100%);
+  }
+  .filter-drawer .drawer-heading {
+    padding: 19px 18px 15px;
+  }
+  .filter-drawer .filter-stack {
+    padding-inline: 18px;
+  }
+  .filter-drawer .filter-apply {
+    margin: 12px 18px 18px;
+  }
 }
 .categories-page,
 .wishlist-page,
@@ -309,11 +429,18 @@
     gap: 8px;
   }
   .sort-control {
+    gap: 0;
+    padding: 3px 8px;
     font-size: 0;
   }
   .sort-control select {
     max-width: 104px;
+    min-height: 27px;
+    padding-right: 19px;
     font-size: 14px;
+  }
+  .sort-control svg {
+    right: 7px;
   }
   .filter-trigger {
     gap: 5px;
@@ -328,7 +455,7 @@
     display: none;
   }
   .catalog-results .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 10px 8px;
   }
   .categories-page,
