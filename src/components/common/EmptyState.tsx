@@ -11,8 +11,8 @@ export function EmptyState({
   title: string;
   text: string;
   to?: string;
-  showIcon: boolean;
-  showButton: boolean;
+  showIcon?: boolean;
+  showButton?: boolean;
 }) {
   return (
     <div className="empty-state">
