@@ -76,7 +76,7 @@ export default function App() {
     <ShopProvider>
       <BrowserRouter>
         <Suspense
-          fallback={<div className="route-loading">Loading NexaTech…</div>}
+          fallback={<WebsiteLoader />}
         >
           <Routes>
             <Route element={<StoreLayout />}>
@@ -115,5 +115,35 @@ export default function App() {
         </Suspense>
       </BrowserRouter>
     </ShopProvider>
+  );
+}
+
+function WebsiteLoader() {
+  return (
+    <div
+      className="route-loading"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading NexaTech"
+    >
+      <div className="route-loader-grid" aria-hidden="true" />
+      <div className="route-loader-content">
+        <div className="route-loader-mark" aria-hidden="true">
+          <span className="route-loader-orbit route-loader-orbit-outer" />
+          <span className="route-loader-orbit route-loader-orbit-inner" />
+          <span className="route-loader-spark route-loader-spark-one" />
+          <span className="route-loader-spark route-loader-spark-two" />
+          <span className="route-loader-core">N</span>
+        </div>
+        <span className="route-loader-wordmark">
+          nexa<span>tech</span>
+        </span>
+        <h1>Getting your next upgrade ready</h1>
+        <p>Thoughtful tech. Just a moment.</p>
+        <div className="route-loader-progress" aria-hidden="true">
+          <span />
+        </div>
+      </div>
+    </div>
   );
 }
