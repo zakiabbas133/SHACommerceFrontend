@@ -1,7 +1,9 @@
 import { useState, type SubmitEvent } from "react";
 import {
+  ArrowDown,
   ArrowRight,
   ArrowUpRight,
+  Check,
   ChevronRight,
   Cpu,
   HelpingHand,
@@ -38,9 +40,13 @@ const brands = [
 ];
 
 export function Home() {
-  const featured = products.filter((product) => product.featured).slice(0, 4);
-  const deals = products.filter((product) => product.originalPrice).slice(0, 4);
-  const newArrivals = products.filter((product) => product.isNew).slice(0, 4);
+  const [visibleCategories, setVisibleCategories] = useState(6);
+  const [visibleFeatured, setVisibleFeatured] = useState(8);
+  const [visibleDeals, setVisibleDeals] = useState(8);
+  const [visibleNewArrivals, setVisibleNewArrivals] = useState(8);
+  const featured = products.filter((product) => product.featured);
+  const deals = products.filter((product) => product.originalPrice);
+  const newArrivals = products.filter((product) => product.isNew);
   const gaming = products
     .filter((product) => product.tags?.includes("gaming"))
     .slice(0, 3);
@@ -120,7 +126,8 @@ export function Home() {
         </span>
         <i />
         <span>
-          <HelpingHand size={17} /> Support from people who know their gear</span>
+          <HelpingHand size={17} /> Support from people who know their gear
+        </span>
       </section>
       <section className="section category-section page-width">
         <SectionHeading
@@ -130,7 +137,7 @@ export function Home() {
           to="/categories"
         />
         <div className="category-grid">
-          {categories.map((category) => (
+          {categories.slice(0, visibleCategories).map((category) => (
             <CategoryCard
               key={category.id}
               category={category}
@@ -138,6 +145,12 @@ export function Home() {
             />
           ))}
         </div>
+        <HomeLoadMore
+          shown={Math.min(visibleCategories, categories.length)}
+          total={categories.length}
+          batchSize={6}
+          onLoadMore={() => setVisibleCategories((count) => count + 6)}
+        />
       </section>
       <section className="section featured-section page-width">
         <SectionHeading
@@ -145,7 +158,13 @@ export function Home() {
           title="Standout upgrades."
           action="Shop all products"
         />
-        <ProductGrid items={featured} />
+        <ProductGrid items={featured.slice(0, visibleFeatured)} />
+        <HomeLoadMore
+          shown={Math.min(visibleFeatured, featured.length)}
+          total={featured.length}
+          batchSize={8}
+          onLoadMore={() => setVisibleFeatured((count) => count + 9)}
+        />
       </section>
       <section className="deal-banner">
         <div className="deal-copy">
@@ -184,7 +203,13 @@ export function Home() {
           action="See all offers"
           to="/shop?filter=sale"
         />
-        <ProductGrid items={deals} />
+        <ProductGrid items={deals.slice(0, visibleDeals)} />
+        <HomeLoadMore
+          shown={Math.min(visibleDeals, deals.length)}
+          total={deals.length}
+          batchSize={8}
+          onLoadMore={() => setVisibleDeals((count) => count + 8)}
+        />
       </section>
       <section className="gaming-feature">
         <div className="gaming-art">
@@ -230,7 +255,13 @@ export function Home() {
           action="Browse new arrivals"
           to="/shop?filter=new"
         />
-        <ProductGrid items={newArrivals} />
+        <ProductGrid items={newArrivals.slice(0, visibleNewArrivals)} />
+        <HomeLoadMore
+          shown={Math.min(visibleNewArrivals, newArrivals.length)}
+          total={newArrivals.length}
+          batchSize={8}
+          onLoadMore={() => setVisibleNewArrivals((count) => count + 8)}
+        />
       </section>
       <section className="upgrade-panels page-width">
         <Link to="/category/memory" className="upgrade-panel upgrade-laptop">
@@ -272,8 +303,7 @@ export function Home() {
       </section>
       <section className="brand-strip page-width">
         <div>
-          <span className="eyebrow">THE NAMES BEHIND THE BUILD</span>
-          <h2>Good company.</h2>
+          <span className="eyebrow">THE NAMES BEHIND THE BUILDS</span>
         </div>
         <div className="brand-logos">
           {brands.map((brand) => (
@@ -296,6 +326,50 @@ export function Home() {
         <NewsletterForm />
       </section>
     </>
+  );
+}
+
+export function HomeLoadMore({
+  shown,
+  total,
+  batchSize,
+  onLoadMore,
+}: {
+  shown: number;
+  total: number;
+  batchSize: number;
+  onLoadMore: () => void;
+}) {
+  if (total <= batchSize) return null;
+
+  const remaining = total - shown;
+  return remaining > 0 ? (
+    <div className="load-more">
+      <span className="load-more-count">
+        Showing <strong>{shown}</strong> of <strong>{total}</strong>{" "}
+        {batchSize === 6 ? "categories" : "products"}
+      </span>
+      <motion.button
+        type="button"
+        className="load-more-button"
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        onClick={onLoadMore}
+      >
+        <span>Load more {batchSize === 6 ? "categories" : "products"}</span>
+        <ArrowDown size={16} />
+      </motion.button>
+    </div>
+  ) : (
+    <div className="load-more load-more-complete" role="status">
+      <span className="load-more-count">
+        You&apos;ve explored all <strong>{total}</strong>{" "}
+        {batchSize === 6 ? "categories" : "products"}
+      </span>
+      <span className="load-more-complete-mark">
+        <Check size={15} />
+      </span>
+    </div>
   );
 }
 

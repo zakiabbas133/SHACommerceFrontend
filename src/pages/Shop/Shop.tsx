@@ -1,5 +1,5 @@
 import { CatalogView } from "../../components/products/CatalogView";
 
 export function Shop() {
-  return <CatalogView />;
+  return <CatalogView paginate />;
 }

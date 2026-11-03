@@ -4,6 +4,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   ChevronDown,
+  FlameIcon,
   Heart,
   Menu,
   Search,
@@ -11,7 +12,7 @@ import {
   UserRound,
   X,
 } from "lucide-react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { categories, categoryGroups, products } from "../../data/products";
 import { useShop } from "../../store/useShop";
 import { useStoreUI } from "../../context/StoreUIContext";
@@ -26,7 +27,11 @@ export function Header() {
   const [suggestions, setSuggestions] = useState<typeof products>([]);
   const [scrolled, setScrolled] = useState(false);
   const [recent, setRecent] = useState<string[]>(() => readRecent());
+  const location = useLocation();
   const navigate = useNavigate();
+  const isDealsPage =
+    location.pathname === "/shop" &&
+    new URLSearchParams(location.search).get("filter") === "sale";
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -152,7 +157,13 @@ export function Header() {
           <NavLink to="/" onClick={dismiss}>
             Home
           </NavLink>
-          <NavLink to="/shop" onClick={dismiss}>
+          <NavLink
+            to="/shop"
+            className={({ isActive }) =>
+              isActive && !isDealsPage ? "active" : undefined
+            }
+            onClick={dismiss}
+          >
             All products
           </NavLink>
           <div className="mega-parent">
@@ -241,11 +252,13 @@ export function Header() {
             Mobile
           </NavLink>
           <NavLink
-            className="nav-deals"
             to="/shop?filter=sale"
+            className={({ isActive }) =>
+              isActive && isDealsPage ? "nav-deals active" : "nav-deals"
+            }
             onClick={dismiss}
           >
-            Deals
+            <FlameIcon /> Deals
           </NavLink>
         </nav>
         <AnimatePresence>

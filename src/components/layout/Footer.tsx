@@ -1,15 +1,16 @@
-import { useState, type SubmitEvent } from "react";
-import { ArrowRight, ArrowUpRight, ShieldCheck } from "lucide-react";
+// import { useState, type SubmitEvent } from "react";
+// import { ArrowRight, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories } from "../../data/products";
 
 export function Footer() {
-  const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState("");
-  const subscribe = (event: SubmitEvent) => {
-    event.preventDefault();
-    if (email.includes("@")) setSubscribed(true);
-  };
+  // const [subscribed, setSubscribed] = useState(false);
+  // const [email, setEmail] = useState("");
+  // const subscribe = (event: SubmitEvent) => {
+  //   event.preventDefault();
+  //   if (email.includes("@")) setSubscribed(true);
+  // };
   return (
     <footer className="site-footer">
       <div className="footer-main">
@@ -45,7 +46,7 @@ export function Footer() {
           <h4>Shop</h4>
           <Link to="/shop">All products</Link>
           <Link to="/category/gaming">Gaming gear</Link>
-          <Link to="/category/graphics-cards">Graphics cards</Link>
+          {/* <Link to="/category/graphics-cards">Graphics cards</Link> */}
           <Link to="/category/laptop-parts">Laptop parts</Link>
           <Link to="/shop?filter=sale">Deals & offers</Link>
         </div>
@@ -65,7 +66,7 @@ export function Footer() {
           <Link to="/account">Contact us</Link>
           <Link to="/account">FAQs</Link>
         </div>
-        <div className="footer-news">
+        {/* <div className="footer-news">
           <h4>Stay in the know.</h4>
           <p>New gear, honest advice and member-only deals. No noise.</p>
           {subscribed ? (
@@ -90,7 +91,7 @@ export function Footer() {
           <span className="newsletter-privacy">
             By subscribing, you agree to our privacy policy.
           </span>
-        </div>
+        </div> */}
       </div>
       <div className="footer-bottom">
         <span>© 2026 NexaTech. All rights reserved.</span>
