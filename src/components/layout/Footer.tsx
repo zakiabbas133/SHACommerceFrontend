@@ -4,6 +4,7 @@
 import { ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { categories } from "../../data/products";
+import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa";
 
 export function Footer() {
   // const [subscribed, setSubscribed] = useState(false);
@@ -33,13 +34,13 @@ export function Footer() {
           </div>
           <div className="social-links">
             <a href="https://instagram.com" aria-label="Instagram">
-              ig
+              <FaInstagram />
             </a>
             <a href="https://youtube.com" aria-label="YouTube">
-              yt
+              <FaYoutube />
             </a>
             <a href="https://facebook.com" aria-label="Facebook">
-              fb
+              <FaFacebook />
             </a>
           </div>
         </div>
